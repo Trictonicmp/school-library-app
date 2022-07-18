@@ -8,7 +8,7 @@ class Person
 
   public
 
-  def initialize(age, name = 'Unknown', parent_permission = true)
+  def initialize(age, name = 'Unknown', parent_permission: true)
     @id = 0
     @name = name
     @age = age
