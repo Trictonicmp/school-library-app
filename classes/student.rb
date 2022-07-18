@@ -10,15 +10,3 @@ class Student < Person
     "¯\(ツ)/¯"
   end
 end
-
-student = Student.new(4, 26, "Amaury", false)
-student = Student.new(4, 26, "Amaury", false)
-student.name?
-student.age?
-student.can_use_services?
-
-student.name("Mario")
-student.age(16)
-student.name?
-student.age?
-student.can_use_services?
