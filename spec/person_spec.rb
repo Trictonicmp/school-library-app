@@ -21,6 +21,10 @@ describe Person do
       expect(person.age?).to eql(20)
     end
 
+    it 'returns id of 0' do
+      expect(person.id?).to eql(0)
+    end
+
     it "sets person's name to \"Raul\"" do
       person.name('Raul')
       expect(person.name?).to eql('Raul')
