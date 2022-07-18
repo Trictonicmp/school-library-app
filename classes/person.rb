@@ -31,6 +31,10 @@ class Person
     @age
   end
 
+  def id?
+    @id
+  end
+
   def can_use_services?
     of_age? || @parent_permission
   end
