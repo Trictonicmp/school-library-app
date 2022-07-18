@@ -1,5 +1,7 @@
-require_relative 'person'
+# frozen_string_literal: true
 
+require_relative 'person'
+# app/classes/person.rb
 class Teacher < Person
   def initialize(specialization, age, name, parent_permission = true)
     super(age, name, parent_permission)
@@ -11,12 +13,12 @@ class Teacher < Person
   end
 end
 
-teacher = Teacher.new(4, 26, "Amaury", false)
+teacher = Teacher.new(4, 26, 'Amaury', false)
 teacher.name?
 teacher.age?
 teacher.can_use_services?
 
-teacher.name("Mario")
+teacher.name('Mario')
 teacher.age(16)
 teacher.name?
 teacher.age?

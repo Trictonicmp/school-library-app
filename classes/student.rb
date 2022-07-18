@@ -1,5 +1,7 @@
-require_relative 'person'
+# frozen_string_literal: true
 
+require_relative 'person'
+# app/classes/student.rb
 class Student < Person
   def initialize(classroom, age, name = 'Unknown', parent_permission = true)
     super(age, name, parent_permission)
