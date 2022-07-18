@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # app/classes/person.rb
 class Person
   private
