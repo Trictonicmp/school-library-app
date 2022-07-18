@@ -2,55 +2,50 @@
 
 # Project Name
 
-> Description the project.
-
+> School Library App is a simple console app to let you manage a school library by adding books and students, with this you can track the status of each book and know what student/students have borrow the book 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo (if available)
-
-[Live Demo Link](https://livedemo.com)
+- Major languages: Ruby
+- Frameworks: N/A
+- Technologies used: Git/rubocop/rspec
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
+- Get Ruby installed on your machine
+- A github Account – to be able to use github actions.
+
 
 ### Setup
+* Open the terminal
+* Run ```cd \path\to\where\you\want\your\local\copy```
+* Clone the repo
+  * Run ```git clone https://github.com/Trictonicmp/school-library-app.git```
+  * Run ```cd school-library-app```
+* Install dependencies  
+  * Run ```bundle install```
 
-### Install
+### Build
+Run ```N/A```
 
-### Usage
+### Tests
+Run ```rspec```
+Run ```rubocop``` (linter)
 
-### Run tests
-
-### Deployment
 
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Amaury Permer**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Trictonicmp](https://github.com/Trictonicmp)
+- LinkedIn: [Amaury Permer](https://www.linkedin.com/in/amaury-permer/)
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 ## 🤝 Contributing
 
