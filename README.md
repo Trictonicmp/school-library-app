@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# School Library App
 
 > School Library App is a simple console app to let you manage a school library by adding books and students, with this you can track the status of each book and know what student/students have borrow the book 
 
