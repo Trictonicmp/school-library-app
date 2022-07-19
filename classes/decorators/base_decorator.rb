@@ -1,6 +1,6 @@
-require_relative 'nameable'
+require_relative '../nameable'
 
-# app/classes/base_decorator.rb
+# app/classes/decorators/base_decorator.rb
 class BaseDecorator < Nameable
   def initialize(nameable = nil)
     super()

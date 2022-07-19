@@ -1,5 +1,6 @@
 require_relative 'base_decorator'
 
+# app/classes/decorators/trimmer_decorator.rb
 class TrimmerDecorator < BaseDecorator
   def initialize(nameable)
     super()
