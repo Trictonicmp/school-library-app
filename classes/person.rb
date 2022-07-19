@@ -1,5 +1,7 @@
+require_relative 'nameable'
+
 # app/classes/person.rb
-class Person
+class Person < Nameable
   private
 
   def of_age?
@@ -9,6 +11,7 @@ class Person
   public
 
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = 0
     @name = name
     @age = age
@@ -37,5 +40,9 @@ class Person
 
   def can_use_services?
     of_age? || @parent_permission
+  end
+
+  def correct_name
+    @name
   end
 end
