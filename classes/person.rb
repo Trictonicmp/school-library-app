@@ -1,4 +1,4 @@
-require_relative ''
+require_relative 'nameable'
 
 # app/classes/person.rb
 class Person < Nameable
