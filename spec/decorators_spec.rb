@@ -10,14 +10,14 @@ describe BaseDecorator do
       baseDecorator = BaseDecorator.new(person)
       expect(baseDecorator.correct_name).to eql('John')
     end
-  end 
+  end
 end
 
 describe CapitalizeDecorator do
   describe 'correct_name method from person "john"' do
     person = Person.new(20, 'john', parent_permission: false)
     capitalizeDecorator = CapitalizeDecorator.new(person)
-    it "returns John after capitalize decorator" do
+    it 'returns John after capitalize decorator' do
       expect(capitalizeDecorator.correct_name).to eql('John')
     end
   end
