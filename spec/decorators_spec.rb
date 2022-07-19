@@ -1,5 +1,6 @@
 require_relative '../classes/base_decorator'
 require_relative '../classes/capitalize_decorator'
+require_relative '../classes/trimmer_decorator'
 require_relative '../classes/person'
 
 describe BaseDecorator do
@@ -12,14 +13,22 @@ describe BaseDecorator do
   end 
 end
 
-
-
 describe CapitalizeDecorator do
   describe 'correct_name method from person "john"' do
     person = Person.new(20, "john", parent_permission: false)
     capitalizeDecorator = CapitalizeDecorator.new(person)
     it "returns John after capitalize decorator" do
       expect(capitalizeDecorator.correct_name).to eql("John")
+    end
+  end
+end
+
+describe TrimmerDecorator do
+  describe 'correct_name method from person "Amaury Elohir"' do
+    it 'returns "Amaury Elo"' do
+      person = Person.new(20, 'Amaury Elohir', parent_permission: false)
+      trimmerDecorator = TrimmerDecorator.new(person)
+      expect(trimmerDecorator.correct_name).to eql('Amaury Elo')
     end
   end
 end

@@ -6,5 +6,10 @@ class TrimmerDecorator < BaseDecorator
   end
 
   def correct_name
-    return @nameable.correct_name[0...10]
+    if @nameable.name?.length > 10
+      return @nameable.correct_name[0...10]
+    end
+
+    return @nameable.correct_name
+  end
 end
