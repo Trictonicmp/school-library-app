@@ -1,4 +1,7 @@
 require_relative '../classes/person'
+require_relative '../classes/book'
+require_relative '../classes/rental'
+require 'date'
 
 describe Person do
   describe 'Constructor' do
@@ -55,6 +58,36 @@ describe Person do
     person3 = Person.new(16, 'John', parent_permission: true)
     it 'returns true due to age 16 and parent_permission true' do
       expect(person3.can_use_services?).to eql(true)
+    end
+  end
+
+  describe 'Many to many relationship between person and rentals' do
+    person = Person.new(20, 'maximilianus', parent_permission: false)
+    book = Book.new('Harry Potter', 'JK Rowling')
+    rental = Rental.new(DateTime.now, book, person)
+    it 'returns true if rental is in books' do
+      expect(book.rentals.include?(rental)).to eql(true)
+    end
+
+    it 'returns true if rental is in person' do
+      expect(person.rentals.include?(rental)).to eql(true)
+    end
+
+    book2 = Book.new('Clean Code', 'Robert C. Martin')
+    rental2 = Rental.new(DateTime.now, book2, person)
+    it 'expects book2 to be in books' do
+      expect(book2.rentals.include?(rental2)).to eql(true)
+    end
+
+    it 'expects rental2 to be in person' do
+      expect(person.rentals.include?(rental2)).to eql(true)
+    end
+
+    it 'expects both, rental1 and rental2 to be in person' do
+      expect(
+        person.rentals.include?(rental) &&
+        person.rentals.include?(rental2)
+      ).to eql(true)
     end
   end
 end

@@ -1,7 +1,10 @@
 require_relative 'nameable'
+require_relative 'rental'
 
 # app/classes/person.rb
 class Person < Nameable
+  attr_accessor :rentals
+
   private
 
   def of_age?
@@ -16,6 +19,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
   def name(name)
@@ -44,5 +48,9 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def add_rental(book, date)
+    Rental.new(date, book, self)
   end
 end

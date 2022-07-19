@@ -1,6 +1,6 @@
-require_relative '../classes/base_decorator'
-require_relative '../classes/capitalize_decorator'
-require_relative '../classes/trimmer_decorator'
+require_relative '../classes/decorators/base_decorator'
+require_relative '../classes/decorators/capitalize_decorator'
+require_relative '../classes/decorators/trimmer_decorator'
 require_relative '../classes/person'
 
 describe BaseDecorator do
