@@ -19,8 +19,8 @@ describe Student do
   end
 
   describe 'Add classroom to student' do
-    classroom = Classroom.new("Arts")
-    student = Student.new(classroom, 20, "maximilianus", parent_permission: false)
+    classroom = Classroom.new('Arts')
+    student = Student.new(classroom, 20, 'maximilianus', parent_permission: false)
     describe 'Check if classroom contains student "maximilianus" and student contains the classroom' do
       it 'returns true if student is in the classroom' do
         expect(classroom.students.include?(student)).to be(true)
@@ -28,7 +28,7 @@ describe Student do
 
       it 'returns true if student\'s classroom is the classroom declared beofre' do
         expect(student.classroom).to eql(classroom)
-      end 
+      end
     end
   end
 end
