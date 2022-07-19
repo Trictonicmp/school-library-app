@@ -2,6 +2,7 @@ require_relative 'nameable'
 
 # app/classes/person.rb
 class Person < Nameable
+  attr_accessor :rentals
   private
 
   def of_age?
@@ -10,7 +11,6 @@ class Person < Nameable
 
   public
 
-  attr_accessor :rentals
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
