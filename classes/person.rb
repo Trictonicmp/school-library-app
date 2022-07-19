@@ -9,6 +9,7 @@ class Person < Nameable
   end
 
   public
+  attr_accessor :rentals
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
@@ -16,6 +17,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
   def name(name)
