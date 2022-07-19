@@ -1,9 +1,10 @@
 require_relative 'nameable'
 
+# app/classes/base_decorator.rb
 class BaseDecorator < Nameable
-  def initialize(nameable)
+  def initialize(nameable = nil)
+    super()
     @nameable = nameable
-    super
   end
 
   def correct_name

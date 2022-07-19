@@ -11,11 +11,11 @@ class Person < Nameable
   public
 
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = 0
     @name = name
     @age = age
     @parent_permission = parent_permission
-    super()
   end
 
   def name(name)
