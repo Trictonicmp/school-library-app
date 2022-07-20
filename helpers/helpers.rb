@@ -1,3 +1,5 @@
+require 'date'
+
 # app/helpers/helpers.rb
 def parse_response(response)
   is_data_ok = false if %w[n N].include? response

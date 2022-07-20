@@ -4,6 +4,7 @@ require_relative 'classes/teacher'
 require_relative 'classes/book'
 require_relative 'classes/person_creator'
 require_relative 'helpers/helpers'
+require 'date'
 
 # app/app.rb
 class App
@@ -81,6 +82,47 @@ class App
     end
   end
 
+  def choose_book
+    puts 'Select a book from the following list by number'
+    @books.each_with_index do |book, index|
+      print "#{index}) Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
+    end
+    print 'Option: '
+    op = Integer(gets.chomp)
+    @books[op]
+  end
+
+  def choose_person
+    puts 'Select a person from the following list by number (not id)'
+    @persons.each_with_index do |person, index|
+      print "#{index}) ID: #{person.id}, Name: #{person.name?}, Age: #{person.age?}\n"
+    end
+    print 'Option: '
+    op = Integer(gets.chomp)
+    @books[op]
+  end
+
+  def create_rental
+    if @books.empty?
+      print "There are no books\n\n"
+      return
+    end
+    if @persons.empty?
+      print "There are no persons\n\n"
+      return
+    end
+    choosen_book = choose_book
+    print "\n"
+    choosen_person = choose_person
+    print "\n"
+
+    print 'Date [AAAA/MM/DD]: '
+    date = gets.chomp
+
+    Rental.new(date, choosen_book, choosen_person)
+    print "Rental created successfully\n\n"
+  end
+
   def run
     op = 0
     while op != 7
@@ -96,7 +138,7 @@ class App
       when 4
         @books << create_book
       when 5
-        puts 'five'
+        @rentals << create_rental
       when 6
         puts 'six'
       when 7
