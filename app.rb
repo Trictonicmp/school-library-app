@@ -2,6 +2,7 @@ require_relative 'classes/classroom'
 require_relative 'classes/student'
 require_relative 'classes/teacher'
 require_relative 'classes/book'
+require_relative 'classes/person_creator'
 require_relative 'helpers/helpers'
 
 # app/app.rb
@@ -11,6 +12,7 @@ class App
     @books = []
     @rentals = []
     @classroom = Classroom.new('Microverse')
+    @person_creator = PersonCreator.new
   end
 
   def show_menu
@@ -53,35 +55,7 @@ class App
     print "\n"
   end
 
-  def create_student
-    age = 0
-    name = ''
-    parent_permission = false
-    until_data_ok do
-      print 'Age: '
-      age = gets.chomp
-      print 'Name: '
-      name = gets.chomp
-      print 'Has parent permission? [Y/N]'
-      parent_permission = parse_response(gets.chomp)
-    end
-    Student.new(@classroom, age, name, parent_permission: parent_permission)
-  end
-
-  def create_teacher
-    age = 0
-    name = ''
-    specialization = ''
-    until_data_ok do
-      print 'Age: '
-      age = gets.chomp
-      print 'Name: '
-      name = gets.chomp
-      print 'Specialization: '
-      specialization = gets.chomp
-    end
-    Teacher.new(specialization, age, name, parent_permission: true)
-  end
+  
 
   def create_person
     puts 'Do you want to create'
@@ -95,28 +69,16 @@ class App
 
     case op
     when 1
-      new_student = create_student
+      new_student = @person_creator.create_student
       new_student.id = generate_new_person_id(@persons)
       print "Student created successfully\n"
       new_student
     when 2
-      new_teacher = create_teacher
+      new_teacher = @person_creator.create_teacher
       new_teacher.id = generate_new_person_id(@persons)
       print "Teacher created successfully\n"
       new_teacher
     end
-  end
-
-  def create_book
-    title = ''
-    author = ''
-    until_data_ok do
-      print 'Title: '
-      title = gets.chomp
-      print 'Author: '
-      author = gets.chomp
-    end
-    Book.new(title, author)
   end
 
   def run
