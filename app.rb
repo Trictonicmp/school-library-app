@@ -92,9 +92,7 @@ class App
       print 'Option: '
       op = Integer(gets.chomp)
       option_is_valid = true if op <= (@persons.length - 1)
-      if op > (@persons.length - 1)
-        print "Wrong item, try again \n\n"
-      end
+      print "Wrong item, try again \n\n" if op > (@persons.length - 1)
     end
     @books[op]
   end
@@ -109,11 +107,9 @@ class App
       print 'Option: '
       op = Integer(gets.chomp)
       option_is_valid = true if op <= (@books.length - 1)
-      if op > (@books.length - 1)
-        print "Wrong item, try again\n\n"
-      end
+      print "Wrong item, try again\n\n" if op > (@books.length - 1)
     end
-    @books[op]
+    @persons[op]
   end
 
   def create_rental
@@ -133,8 +129,27 @@ class App
     print 'Date [AAAA/MM/DD]: '
     date = gets.chomp
 
-    Rental.new(date, choosen_book, choosen_person)
     print "Rental created successfully\n\n"
+    Rental.new(date, choosen_book, choosen_person)
+  end
+
+  def list_rentals
+    print 'Person ID: '
+    id = Integer(gets.chomp)
+    choosen_person = nil
+    puts 'Rentals: '
+    @persons.each do |person|
+       choosen_person = person if person.id == id
+    end
+    if choosen_person == nil 
+      return
+    end
+    choosen_person.rentals.each do |rental|
+      print "Date: #{rental.date}, "
+      print "Book: #{rental.book.title}, "
+      print "Person: #{rental.person.name?}\n"
+    end
+    print "\n\n"
   end
 
   def run
@@ -154,7 +169,7 @@ class App
       when 5
         @rentals << create_rental
       when 6
-        puts 'six'
+        list_rentals
       when 7
         puts 'bye'
       end
