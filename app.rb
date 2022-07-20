@@ -22,10 +22,52 @@ class App
     return Integer(op)
   end
 
+  def create_student
+    
+  end
+
+  def create_person
+    newperson = nil
+    puts 'Do you want to create'
+    puts '1.- Student'
+    puts '2.- Teacher'
+    puts '3.- Cancel'
+    puts "\n"
+    
+    print 'Option:'
+    op = gets.chomp
+
+    case op
+    when 1
+      create_student
+    when 2
+      create_teacher
+    when 3
+      return
+    end
+  end
+
   def run
     op = 0
     while op != 7
       op = show_menu
+
+      case op
+      when 1
+        puts 'one'
+      when 2
+        puts 'two'
+      when 3
+        create_person
+      when 4
+        puts 'four'
+      when 5
+        puts 'five'
+      when 6
+        puts 'six'
+      when 7
+        puts 'bye'
+      end
     end
 
   end
