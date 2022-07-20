@@ -1,5 +1,6 @@
 require_relative 'classes/classroom'
 require_relative 'classes/student'
+require_relative 'classes/teacher'
 
 # app/app.rb
 class App
@@ -66,6 +67,28 @@ class App
     Student.new(@classroom, age, name, parent_permission: parent_permission)
   end
 
+  def create_teacher
+    is_data_ok = false
+    age = 0
+    name = ''
+    specialization = ''
+    while is_data_ok != true
+      print 'Age: '
+      age = gets.chomp
+      print 'Name: '
+      name = gets.chomp
+      print 'Specialization: '
+      specialization = gets.chomp
+
+      print "\nis all the information correct? [Y/N]"
+      data_ok_response = gets.chomp
+      is_data_ok = false if %w[n N].include? data_ok_response
+      is_data_ok = true if %w[y Y].include? data_ok_response
+    end
+
+    Teacher.new(specialization, age, name, parent_permission: true)
+  end
+
   def create_person
     puts 'Do you want to create'
     puts '1.- Student'
@@ -73,7 +96,7 @@ class App
     puts '3.- Cancel'
     puts "\n"
 
-    print 'Option:'
+    print 'Option: '
     op = Integer(gets.chomp)
 
     case op
@@ -81,8 +104,12 @@ class App
       new_student = create_student
       new_student.id = generate_new_person_id
       @persons << new_student
+      print "Student created successfully\n"
     when 2
-      create_teacher
+      new_teacher = create_teacher
+      new_teacher.id = generate_new_person_id
+      @persons << new_teacher
+      print "Teacher created successfully\n"
     end
   end
 
