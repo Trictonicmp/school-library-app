@@ -28,6 +28,17 @@ class App
     Integer(op)
   end
 
+  def list_books
+    if @books.empty?
+      print "There are no books\n"
+      return
+    end
+    @books.each do |book|
+      print "Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
+    end
+    print "\n"
+  end
+
   def parse_response(response)
     is_data_ok = false if %w[n N].include? response
     is_data_ok = true if %w[y Y].include? response
@@ -64,7 +75,7 @@ class App
       print 'Has parent permission? [Y/N]'
       parent_permission = parse_response(gets.chomp)
 
-      print "\nis all the information correct? [Y/N]"
+      print "\nis all the information correct? [Y/N]: "
       is_data_ok = parse_response(gets.chomp)
     end
 
@@ -84,7 +95,7 @@ class App
       print 'Specialization: '
       specialization = gets.chomp
 
-      print "\nis all the information correct? [Y/N]"
+      print "\nis all the information correct? [Y/N]: "
       is_data_ok = parse_response(gets.chomp)
     end
 
@@ -106,12 +117,12 @@ class App
       new_student = create_student
       new_student.id = generate_new_person_id
       print "Student created successfully\n"
-      return new_student
+      new_student
     when 2
       new_teacher = create_teacher
       new_teacher.id = generate_new_person_id
       print "Teacher created successfully\n"
-      return new_teacher
+      new_teacher
     end
   end
 
@@ -125,7 +136,7 @@ class App
       print 'Author: '
       author = gets.chomp
 
-      print "\nis all the information ok? [Y/N]"
+      print "\nis all the information correct? [Y/N]: "
       is_data_ok = parse_response(gets.chomp)
     end
     Book.new(title, author)
@@ -138,13 +149,13 @@ class App
 
       case op
       when 1
-        puts 'one'
+        list_books
       when 2
         puts 'two'
       when 3
         @persons << create_person
       when 4
-        create_book
+        @books << create_book
       when 5
         puts 'five'
       when 6
