@@ -16,7 +16,7 @@ class PersonCreator
     end
     Student.new(@classroom, age, name, parent_permission: parent_permission)
   end
-  
+
   def create_teacher
     age = 0
     name = ''

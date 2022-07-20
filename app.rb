@@ -55,8 +55,6 @@ class App
     print "\n"
   end
 
-  
-
   def create_person
     puts 'Do you want to create'
     puts '1.- Student'
