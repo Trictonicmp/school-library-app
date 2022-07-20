@@ -6,7 +6,7 @@ def parse_response(response)
 end
 
 def generate_new_person_id(arr)
-  new_id_found = true
+  new_id_found = false
   new_id = 0
 
   until new_id_found
@@ -15,6 +15,7 @@ def generate_new_person_id(arr)
     arr.each do |person|
       if person.id == new_id
         new_id_found = false
+        break
       end
     end
   end

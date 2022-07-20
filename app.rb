@@ -97,13 +97,11 @@ class App
     when 1
       new_student = create_student
       new_student.id = generate_new_person_id(@persons)
-      print new_student.id
       print "Student created successfully\n"
       new_student
     when 2
       new_teacher = create_teacher
       new_teacher.id = generate_new_person_id(@persons)
-      print new_teacher.id
       print "Teacher created successfully\n"
       new_teacher
     end
