@@ -53,59 +53,33 @@ class App
     print "\n"
   end
 
-  def generate_new_person_id
-    new_id_found = true
-    new_id = 0
-
-    until new_id_found
-      new_id = rand(1...1000)
-      @persons.each do |person|
-        if person.id == new_id
-          new_id_found = false
-          break
-        end
-      end
-    end
-    new_id
-  end
-
   def create_student
-    is_data_ok = false
     age = 0
     name = ''
     parent_permission = false
-    while is_data_ok != true
+    until_data_ok {
       print 'Age: '
       age = gets.chomp
       print 'Name: '
       name = gets.chomp
       print 'Has parent permission? [Y/N]'
       parent_permission = parse_response(gets.chomp)
-
-      print "\nis all the information correct? [Y/N]: "
-      is_data_ok = parse_response(gets.chomp)
-    end
-
+    }
     Student.new(@classroom, age, name, parent_permission: parent_permission)
   end
 
   def create_teacher
-    is_data_ok = false
     age = 0
     name = ''
     specialization = ''
-    while is_data_ok != true
+    until_data_ok {
       print 'Age: '
       age = gets.chomp
       print 'Name: '
       name = gets.chomp
       print 'Specialization: '
       specialization = gets.chomp
-
-      print "\nis all the information correct? [Y/N]: "
-      is_data_ok = parse_response(gets.chomp)
-    end
-
+    }
     Teacher.new(specialization, age, name, parent_permission: true)
   end
 
@@ -122,30 +96,28 @@ class App
     case op
     when 1
       new_student = create_student
-      new_student.id = generate_new_person_id
+      new_student.id = generate_new_person_id(@persons)
+      print new_student.id
       print "Student created successfully\n"
       new_student
     when 2
       new_teacher = create_teacher
-      new_teacher.id = generate_new_person_id
+      new_teacher.id = generate_new_person_id(@persons)
+      print new_teacher.id
       print "Teacher created successfully\n"
       new_teacher
     end
   end
 
   def create_book
-    is_data_ok = false
     title = ''
     author = ''
-    while is_data_ok != true
+    until_data_ok {
       print 'Title: '
       title = gets.chomp
       print 'Author: '
       author = gets.chomp
-
-      print "\nis all the information correct? [Y/N]: "
-      is_data_ok = parse_response(gets.chomp)
-    end
+    }
     Book.new(title, author)
   end
 
