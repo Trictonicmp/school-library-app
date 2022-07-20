@@ -83,22 +83,36 @@ class App
   end
 
   def choose_book
-    puts 'Select a book from the following list by number'
-    @books.each_with_index do |book, index|
-      print "#{index}) Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
+    option_is_valid = false
+    until option_is_valid
+      puts 'Select a book from the following list by number'
+      @books.each_with_index do |book, index|
+        print "#{index}) Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
+      end
+      print 'Option: '
+      op = Integer(gets.chomp)
+      option_is_valid = true if op <= (@persons.length - 1)
+      if op > (@persons.length - 1)
+        print "Wrong item, try again \n\n"
+      end
     end
-    print 'Option: '
-    op = Integer(gets.chomp)
     @books[op]
   end
 
   def choose_person
-    puts 'Select a person from the following list by number (not id)'
-    @persons.each_with_index do |person, index|
-      print "#{index}) ID: #{person.id}, Name: #{person.name?}, Age: #{person.age?}\n"
+    option_is_valid = false
+    until option_is_valid
+      puts 'Select a person from the following list by number (not id)'
+      @persons.each_with_index do |person, index|
+        print "#{index}) ID: #{person.id}, Name: #{person.name?}, Age: #{person.age?}\n"
+      end
+      print 'Option: '
+      op = Integer(gets.chomp)
+      option_is_valid = true if op <= (@books.length - 1)
+      if op > (@books.length - 1)
+        print "Wrong item, try again\n\n"
+      end
     end
-    print 'Option: '
-    op = Integer(gets.chomp)
     @books[op]
   end
 
