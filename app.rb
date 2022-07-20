@@ -1,6 +1,7 @@
 require_relative 'classes/classroom'
 require_relative 'classes/student'
 require_relative 'classes/teacher'
+require_relative 'classes/book'
 
 # app/app.rb
 class App
@@ -25,6 +26,13 @@ class App
     op = gets.chomp
 
     Integer(op)
+  end
+
+  def parse_response(response)
+    is_data_ok = false if %w[n N].include? response
+    is_data_ok = true if %w[y Y].include? response
+
+    is_data_ok
   end
 
   def generate_new_person_id
@@ -54,14 +62,10 @@ class App
       print 'Name: '
       name = gets.chomp
       print 'Has parent permission? [Y/N]'
-      parent_permission_response = gets.chomp
-      parent_permission = false if %w[n N].include? parent_permission_response
-      parent_permission = true if %w[y Y].include? parent_permission_response
+      parent_permission = parse_response(gets.chomp)
 
       print "\nis all the information correct? [Y/N]"
-      data_ok_response = gets.chomp
-      is_data_ok = false if %w[n N].include? data_ok_response
-      is_data_ok = true if %w[y Y].include? data_ok_response
+      is_data_ok = parse_response(gets.chomp)
     end
 
     Student.new(@classroom, age, name, parent_permission: parent_permission)
@@ -81,9 +85,7 @@ class App
       specialization = gets.chomp
 
       print "\nis all the information correct? [Y/N]"
-      data_ok_response = gets.chomp
-      is_data_ok = false if %w[n N].include? data_ok_response
-      is_data_ok = true if %w[y Y].include? data_ok_response
+      is_data_ok = parse_response(gets.chomp)
     end
 
     Teacher.new(specialization, age, name, parent_permission: true)
@@ -103,14 +105,30 @@ class App
     when 1
       new_student = create_student
       new_student.id = generate_new_person_id
-      @persons << new_student
       print "Student created successfully\n"
+      return new_student
     when 2
       new_teacher = create_teacher
       new_teacher.id = generate_new_person_id
-      @persons << new_teacher
       print "Teacher created successfully\n"
+      return new_teacher
     end
+  end
+
+  def create_book
+    is_data_ok = false
+    title = ''
+    author = ''
+    while is_data_ok != true
+      print 'Title: '
+      title = gets.chomp
+      print 'Author: '
+      author = gets.chomp
+
+      print "\nis all the information ok? [Y/N]"
+      is_data_ok = parse_response(gets.chomp)
+    end
+    Book.new(title, author)
   end
 
   def run
@@ -124,9 +142,9 @@ class App
       when 2
         puts 'two'
       when 3
-        create_person
+        @persons << create_person
       when 4
-        puts 'four'
+        create_book
       when 5
         puts 'five'
       when 6
