@@ -2,6 +2,7 @@ require_relative 'classes/classroom'
 require_relative 'classes/student'
 require_relative 'classes/teacher'
 require_relative 'classes/book'
+require_relative 'helpers/helpers'
 
 # app/app.rb
 class App
@@ -50,13 +51,6 @@ class App
       print "Age: #{person.age?}\n"
     end
     print "\n"
-  end
-
-  def parse_response(response)
-    is_data_ok = false if %w[n N].include? response
-    is_data_ok = true if %w[y Y].include? response
-
-    is_data_ok
   end
 
   def generate_new_person_id
