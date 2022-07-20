@@ -139,11 +139,10 @@ class App
     choosen_person = nil
     puts 'Rentals: '
     @persons.each do |person|
-       choosen_person = person if person.id == id
+      choosen_person = person if person.id == id
     end
-    if choosen_person == nil 
-      return
-    end
+    return if choosen_person.nil?
+
     choosen_person.rentals.each do |rental|
       print "Date: #{rental.date}, "
       print "Book: #{rental.book.title}, "
@@ -153,27 +152,27 @@ class App
   end
 
   def run
-    op = 0
-    while op != 7
-      op = show_menu
+    op = show_menu
 
-      case op
-      when 1
-        list_books
-      when 2
-        list_persons
-      when 3
-        @persons << create_person
-      when 4
-        @books << create_book
-      when 5
-        @rentals << create_rental
-      when 6
-        list_rentals
-      when 7
-        puts 'bye'
-      end
+    case op
+    when 1
+      list_books
+    when 2
+      list_persons
+    when 3
+      @persons << create_person
+    when 4
+      @books << create_book
+    when 5
+      @rentals << create_rental
+    when 6
+      list_rentals
+    else
+      puts 'bye'
+      exit
     end
+
+    run
   end
 end
 
