@@ -33,9 +33,10 @@ class App
 
   def list_books
     if @books.empty?
-      print "There are no books\n"
+      print "There are no books\n\n"
       return
     end
+    puts 'Books list'
     @books.each do |book|
       print "Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
     end
@@ -44,9 +45,10 @@ class App
 
   def list_persons
     if @persons.empty?
-      print "There are no persons\n"
+      print "There are no persons\n\n"
       return
     end
+    puts 'Persons list'
     @persons.each do |person|
       print "[#{person.class}] Name: #{person.name?}, "
       print "ID: #{person.id}, "
@@ -69,12 +71,12 @@ class App
     when 1
       new_student = @person_creator.create_student
       new_student.id = generate_new_person_id(@persons)
-      print "Student created successfully\n"
+      print "Student created successfully\n\n"
       new_student
     when 2
       new_teacher = @person_creator.create_teacher
       new_teacher.id = generate_new_person_id(@persons)
-      print "Teacher created successfully\n"
+      print "Teacher created successfully\n\n"
       new_teacher
     end
   end

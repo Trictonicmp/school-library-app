@@ -41,5 +41,6 @@ def create_book
     print 'Author: '
     author = gets.chomp
   end
+  print "Book created successfully\n\n"
   Book.new(title, author)
 end

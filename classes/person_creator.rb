@@ -11,7 +11,7 @@ class PersonCreator
       age = gets.chomp
       print 'Name: '
       name = gets.chomp
-      print 'Has parent permission? [Y/N]'
+      print 'Has parent permission? [Y/N]: '
       parent_permission = parse_response(gets.chomp)
     end
     Student.new(@classroom, age, name, parent_permission: parent_permission)
