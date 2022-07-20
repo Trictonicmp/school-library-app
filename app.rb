@@ -39,6 +39,19 @@ class App
     print "\n"
   end
 
+  def list_persons
+    if @persons.empty?
+      print "There are no persons\n"
+      return
+    end
+    @persons.each do |person|
+      print "[#{person.class}] Name: #{person.name?}, "
+      print "ID: #{person.id}, "
+      print "Age: #{person.age?}\n"
+    end
+    print "\n"
+  end
+
   def parse_response(response)
     is_data_ok = false if %w[n N].include? response
     is_data_ok = true if %w[y Y].include? response
@@ -151,7 +164,7 @@ class App
       when 1
         list_books
       when 2
-        puts 'two'
+        list_persons
       when 3
         @persons << create_person
       when 4
