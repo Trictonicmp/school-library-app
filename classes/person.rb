@@ -3,7 +3,7 @@ require_relative 'rental'
 
 # app/classes/person.rb
 class Person < Nameable
-  attr_accessor :rentals
+  attr_accessor :rentals, :id
 
   private
 
