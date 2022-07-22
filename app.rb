@@ -106,8 +106,8 @@ class App
       end
       print 'Option: '
       op = Integer(gets.chomp)
-      option_is_valid = true if op <= (@books.length - 1)
-      print "Wrong item, try again\n\n" if op > (@books.length - 1)
+      option_is_valid = true if op <= (@persons.length - 1)
+      print "Wrong item, try again\n\n" if op > (@persons.length - 1)
     end
     @persons[op]
   end
