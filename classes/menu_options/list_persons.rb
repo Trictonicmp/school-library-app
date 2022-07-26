@@ -2,9 +2,9 @@ require_relative 'person_lister'
 # app/classes/menu_options/list_persons.rb
 
 class ListPersons
-  def initialize(state)
-    @persons_list = state.persons
-    @person_lister = PersonLister.new(state.persons)
+  def initialize(persons_list)
+    @persons_list = persons_list
+    @person_lister = PersonLister.new(persons_list)
   end
 
   def list_persons

@@ -7,6 +7,6 @@ require_relative 'menu_options/list_rentals'
 # app/classes/app_manager
 class AppManager
   def initialize(state)
-    @list_books = ListBooks.new(state)
+    @list_books = ListBooks.new(state.books)
   end
 end
