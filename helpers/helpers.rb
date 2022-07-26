@@ -25,6 +25,21 @@ def generate_new_person_id(arr)
   new_id
 end
 
+def until_valid_option(min, max)
+  valid_option = false
+  op = 0
+  while !valid_option do
+    yield
+    print "Option: "
+    op = Integer(gets.chomp)
+
+    valid_option = true if op >= min && op < max
+    print "Wrong item, try again\n\n" if op >= max || op < min
+  end
+
+  op
+end
+
 def until_data_ok
   is_data_ok = false
   while is_data_ok != true

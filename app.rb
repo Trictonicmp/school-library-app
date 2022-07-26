@@ -77,27 +77,17 @@ class App
   end
 
   def choose_book
-    option_is_valid = false
-    until option_is_valid
+    op = until_valid_option(0, @state.books.length) do
       puts 'Select a book from the following list by number'
       @app_manager.book_lister.list_books_with_index
-      print 'Option: '
-      op = Integer(gets.chomp)
-      option_is_valid = true if op <= (@state.persons.length - 1)
-      print "Wrong item, try again \n\n" if op > (@state.persons.length - 1)
     end
     @state.books[op]
   end
 
   def choose_person
-    option_is_valid = false
-    until option_is_valid
+    op = until_valid_option(0, @state.persons.length) do
       puts 'Select a person from the following list by number (not id)'
       @app_manager.person_lister.list_persons_with_index
-      print 'Option: '
-      op = Integer(gets.chomp)
-      option_is_valid = true if op <= (@state.persons.length - 1)
-      print "Wrong item, try again\n\n" if op > (@state.persons.length - 1)
     end
     @state.persons[op]
   end
