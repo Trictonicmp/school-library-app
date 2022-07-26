@@ -1,8 +1,3 @@
-require_relative 'classes/core/classroom'
-require_relative 'classes/core/student'
-require_relative 'classes/core/teacher'
-require_relative 'classes/core/book'
-require_relative 'classes/core/person_creator'
 require_relative 'classes/state_manager'
 require_relative 'classes/app_manager'
 require_relative 'helpers/helpers'
@@ -13,18 +8,24 @@ class App
   def initialize
     @state = StateManager.new
     @app_manager = AppManager.new(@state)
-    @classroom = Classroom.new('Microverse')
+
+    @menu_options = [
+      'List all books',
+      'List all people',
+      'Create a person',
+      'Create a book',
+      'Create a rental',
+      'List all rentals for a given person id',
+      'Exit'
+    ]
   end
 
   def show_menu
-    puts 'Please choose an option by entering a number'
-    puts '1.- List all books'
-    puts '2.- List all people'
-    puts '3.- Create a person'
-    puts '4.- Create a book'
-    puts '5.- Create a rental'
-    puts '6.- List all rentals for a given person id'
-    puts '7.- Exit'
+    
+    @menu_options.each_with_index do |menu_item, index|
+      print "#{index + 1}.- #{menu_item}\n"
+    end
+
     puts "\n"
     print 'Option: '
     op = gets.chomp

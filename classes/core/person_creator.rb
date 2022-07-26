@@ -1,8 +1,24 @@
+require_relative 'student'
 require_relative 'classroom'
 require_relative '../../helpers/helpers'
 
 # app/classes/core/person_creator.rb
 class PersonCreator
+  public
+  def initialize
+    @classroom = Classroom.new('Microverse')
+  end
+  
+  def create_student
+    age, name, parent_permission = ask_student_info
+    Student.new(@classroom, age, name, parent_permission: parent_permission)
+  end
+
+  def create_teacher
+    age, name, specialization = ask_teacher_info
+    Teacher.new(specialization, age, name, parent_permission: true)
+  end
+
   private
   def ask_student_info
     age = 0
@@ -37,19 +53,5 @@ class PersonCreator
     name = gets.chomp
 
     return age, name
-  end
-
-  public
-  def initialize
-    @classroom = Classroom.new('Microverse')
-  end
-  def create_student
-    age, name, parent_permission = ask_student_info
-    Student.new(@classroom, age, name, parent_permission: parent_permission)
-  end
-
-  def create_teacher
-    age, name, specialization = ask_teacher_info
-    Teacher.new(specialization, age, name, parent_permission: true)
   end
 end
