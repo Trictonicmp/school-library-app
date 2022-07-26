@@ -25,15 +25,13 @@ class App
       print "#{index + 1}.- #{menu_item}\n"
     end
     puts "\n"
-    op = until_valid_option(1, 8) do
-    end
-
-    Integer(op)
   end
 
   def run
     while @state.app_running do
-      op = show_menu
+      op = until_valid_option(1, 8) do
+        show_menu
+      end
       @app_manager.goto_option(op)
     end
   end
