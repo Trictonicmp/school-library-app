@@ -10,5 +10,6 @@ class AppManager
     @list_books = ListBooks.new(state.books)
     @list_persons = ListPersons.new(state.persons)
     @create_person = CreatePerson.new(state.persons)
+    @create_book = Create
   end
 end

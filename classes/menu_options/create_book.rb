@@ -2,7 +2,7 @@ require_relative '../core/book'
 require_relative '../helpers/helpers'
 
 # app/classes/menu_options/book_creator.rb
-class BookCreator
+class CreateBook
   public
   def initialize(books_list)
     @books_list = books_list
