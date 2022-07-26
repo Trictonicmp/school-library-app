@@ -14,7 +14,6 @@ class AppManager
     @create_book = CreateBook.new(state.books)
     @create_rental = CreateRental.new(state)
     @list_rentals = ListRentals.new(state.persons)
-    @app_running = state.app_running
   end
 
   def goto_option(option)
