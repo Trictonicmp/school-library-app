@@ -4,8 +4,8 @@ require_relative '../helpers/helpers'
 # app/classes/menu_options/create_person.rb
 class CreatePerson
   public
-  def initialize(state)
-    @persons_list = state.persons
+  def initialize(persons_list)
+    @persons_list = persons_list
     @person_creator = PersonCreator.new
   end
 
