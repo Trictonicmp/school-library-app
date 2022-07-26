@@ -1,4 +1,4 @@
-require_relative '../nameable'
+require_relative '../core/nameable'
 
 # app/classes/decorators/base_decorator.rb
 class BaseDecorator < Nameable

@@ -1,5 +1,5 @@
-require_relative '../classes/student'
-require_relative '../classes/classroom'
+require_relative '../classes/core/student'
+require_relative '../classes/core/classroom'
 
 describe Student do
   describe 'Constructor' do

@@ -3,15 +3,14 @@ require_relative 'classes/student'
 require_relative 'classes/teacher'
 require_relative 'classes/book'
 require_relative 'classes/person_creator'
+require_relative 'classes/state_manager'
 require_relative 'helpers/helpers'
 require 'date'
 
 # app/app.rb
 class App
   def initialize
-    @persons = []
-    @books = []
-    @rentals = []
+    @state = StateManager.new
     @classroom = Classroom.new('Microverse')
     @person_creator = PersonCreator.new
   end
@@ -33,24 +32,24 @@ class App
   end
 
   def list_books
-    if @books.empty?
+    if @state.books.empty?
       print "There are no books\n\n"
       return
     end
     puts 'Books list'
-    @books.each do |book|
+    @state.books.each do |book|
       print "Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
     end
     print "\n"
   end
 
   def list_persons
-    if @persons.empty?
+    if @state.persons.empty?
       print "There are no persons\n\n"
       return
     end
     puts 'Persons list'
-    @persons.each do |person|
+    @state.persons.each do |person|
       print "[#{person.class}] Name: #{person.name?}, "
       print "ID: #{person.id}, "
       print "Age: #{person.age?}\n"
@@ -71,12 +70,12 @@ class App
     case op
     when 1
       new_student = @person_creator.create_student
-      new_student.id = generate_new_person_id(@persons)
+      new_student.id = generate_new_person_id(@state.persons)
       print "Student created successfully\n\n"
       new_student
     when 2
       new_teacher = @person_creator.create_teacher
-      new_teacher.id = generate_new_person_id(@persons)
+      new_teacher.id = generate_new_person_id(@state.persons)
       print "Teacher created successfully\n\n"
       new_teacher
     end
@@ -86,38 +85,38 @@ class App
     option_is_valid = false
     until option_is_valid
       puts 'Select a book from the following list by number'
-      @books.each_with_index do |book, index|
+      @state.books.each_with_index do |book, index|
         print "#{index}) Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
       end
       print 'Option: '
       op = Integer(gets.chomp)
-      option_is_valid = true if op <= (@persons.length - 1)
-      print "Wrong item, try again \n\n" if op > (@persons.length - 1)
+      option_is_valid = true if op <= (@state.persons.length - 1)
+      print "Wrong item, try again \n\n" if op > (@state.persons.length - 1)
     end
-    @books[op]
+    @state.books[op]
   end
 
   def choose_person
     option_is_valid = false
     until option_is_valid
       puts 'Select a person from the following list by number (not id)'
-      @persons.each_with_index do |person, index|
+      @state.persons.each_with_index do |person, index|
         print "#{index}) ID: #{person.id}, Name: #{person.name?}, Age: #{person.age?}\n"
       end
       print 'Option: '
       op = Integer(gets.chomp)
-      option_is_valid = true if op <= (@persons.length - 1)
-      print "Wrong item, try again\n\n" if op > (@persons.length - 1)
+      option_is_valid = true if op <= (@state.persons.length - 1)
+      print "Wrong item, try again\n\n" if op > (@state.persons.length - 1)
     end
-    @persons[op]
+    @state.persons[op]
   end
 
   def create_rental
-    if @books.empty?
+    if @state.books.empty?
       print "There are no books\n\n"
       return
     end
-    if @persons.empty?
+    if @state.persons.empty?
       print "There are no persons\n\n"
       return
     end
@@ -138,7 +137,7 @@ class App
     id = Integer(gets.chomp)
     choosen_person = nil
     puts 'Rentals: '
-    @persons.each do |person|
+    @state.persons.each do |person|
       choosen_person = person if person.id == id
     end
     return if choosen_person.nil?
@@ -160,11 +159,11 @@ class App
     when 2
       list_persons
     when 3
-      @persons << create_person
+      @state.persons << create_person
     when 4
-      @books << create_book
+      @state.books << create_book
     when 5
-      @rentals << create_rental
+      @state.rentals << create_rental
     when 6
       list_rentals
     else

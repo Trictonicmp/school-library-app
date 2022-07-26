@@ -1,4 +1,4 @@
-require_relative '../classes/nameable'
+require_relative '../classes/core/nameable'
 
 describe Nameable do
   describe 'correct_name method' do

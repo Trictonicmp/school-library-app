@@ -1,6 +1,6 @@
-require_relative '../classes/person'
-require_relative '../classes/book'
-require_relative '../classes/rental'
+require_relative '../classes/core/person'
+require_relative '../classes/core/book'
+require_relative '../classes/core/rental'
 require 'date'
 
 describe Person do

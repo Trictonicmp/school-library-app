@@ -1,7 +1,7 @@
 require_relative '../classes/decorators/base_decorator'
 require_relative '../classes/decorators/capitalize_decorator'
 require_relative '../classes/decorators/trimmer_decorator'
-require_relative '../classes/person'
+require_relative '../classes/core/person'
 
 describe BaseDecorator do
   describe 'correct_name method' do

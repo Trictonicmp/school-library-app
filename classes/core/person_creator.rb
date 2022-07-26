@@ -1,4 +1,4 @@
-require_relative '../helpers/helpers'
+require_relative '../../helpers/helpers'
 
 # app/classes/person_creator.rb
 class PersonCreator

@@ -1,4 +1,4 @@
-require_relative '../classes/teacher'
+require_relative '../classes/core/teacher'
 
 describe Teacher do
   describe 'Constructor' do
