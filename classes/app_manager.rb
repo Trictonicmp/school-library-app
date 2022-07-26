@@ -1,17 +1,12 @@
-require_relative 'core/book_lister'
-require_relative 'core/book_creator'
-require_relative 'core/person_lister'
-require_relative 'core/person_creator'
+require_relative 'menu_options/list_books'
+require_relative 'menu_options/list_persons'
+require_relative 'menu_options/create_person'
+require_relative 'menu_options/create_book'
+require_relative 'menu_options/create_rental'
+require_relative 'menu_options/list_rentals'
 # app/classes/app_manager
 class AppManager
-  attr_reader :book_creator
-  attr_reader :book_lister
-  attr_reader :person_lister
-  attr_reader :person_creator
   def initialize(state)
-    @book_lister = BookLister.new(state.books)
-    @book_creator = BookCreator.new
-    @person_lister = PersonLister.new(state.persons)
-    @person_creator = PersonCreator.new
+    @list_books = ListBooks.new(state)
   end
 end
