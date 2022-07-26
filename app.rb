@@ -21,7 +21,6 @@ class App
   end
 
   def show_menu
-    
     @menu_options.each_with_index do |menu_item, index|
       print "#{index + 1}.- #{menu_item}\n"
     end
