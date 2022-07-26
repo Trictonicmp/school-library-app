@@ -8,6 +8,12 @@ class CreateBook
     @books_list = books_list
   end
 
+  def create_book
+    title, author = ask_data
+    print "Book created successfully\n\n"
+    @books_list << Book.new(title, author)
+  end
+
   private
   def ask_data
     title = ''
@@ -21,12 +27,5 @@ class CreateBook
     end
 
     return title, author
-  end
-
-  public
-  def create_book
-    title, author = ask_data
-    print "Book created successfully\n\n"
-    @books_list << Book.new(title, author)
   end
 end
