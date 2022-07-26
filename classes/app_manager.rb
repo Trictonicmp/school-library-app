@@ -8,5 +8,7 @@ require_relative 'menu_options/list_rentals'
 class AppManager
   def initialize(state)
     @list_books = ListBooks.new(state.books)
+    @list_persons = ListPersons.new(state.persons)
+    @create_person = CreatePerson.new(state.persons)
   end
 end

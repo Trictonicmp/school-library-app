@@ -1,8 +1,13 @@
-require_relative 'book'
-require_relative '../../helpers/helpers'
+require_relative '../core/book'
+require_relative '../helpers/helpers'
 
-# app/classes/core/book_creator.rb
+# app/classes/menu_options/book_creator.rb
 class BookCreator
+  public
+  def initialize(books_list)
+    @books_list = books_list
+  end
+
   private
   def ask_data
     title = ''
@@ -22,6 +27,6 @@ class BookCreator
   def create_book
     title, author = ask_data
     print "Book created successfully\n\n"
-    Book.new(title, author)
+    @books_list << Book.new(title, author)
   end
 end
