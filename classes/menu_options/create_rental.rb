@@ -1,7 +1,7 @@
 require_relative '../core/rental'
 require_relative '../core/person_lister'
 require_relative '../core/book_lister'
-require_relative '../helpers/helpers'
+require_relative '../../helpers/helpers'
 
 # app/classes/menu_options/create_rental.rb
 class CreateRental

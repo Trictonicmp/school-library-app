@@ -1,5 +1,4 @@
 # app/classes/core/book_lister.rb
-
 class BookLister
   def initialize(book_list)
     @books_list = book_list

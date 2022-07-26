@@ -1,5 +1,5 @@
 require_relative '../core/book'
-require_relative '../helpers/helpers'
+require_relative '../../helpers/helpers'
 
 # app/classes/menu_options/book_creator.rb
 class CreateBook

@@ -1,5 +1,5 @@
-require_relative '../core/persons_lister'
-require_relative '../helpers/helpers'
+require_relative '../core/person_lister'
+require_relative '../../helpers/helpers'
 
 # app/classes/menu_options
 class ListRentals
@@ -15,7 +15,7 @@ class ListRentals
     id = Integer(gets.chomp)
     choosen_person = nil
     puts 'Rentals: '
-    @state.persons.each do |person|
+    @persons_list.each do |person|
       choosen_person = person if person.id == id
     end
     return if choosen_person.nil?

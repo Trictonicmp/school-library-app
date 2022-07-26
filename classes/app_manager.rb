@@ -4,6 +4,7 @@ require_relative 'menu_options/create_person'
 require_relative 'menu_options/create_book'
 require_relative 'menu_options/create_rental'
 require_relative 'menu_options/list_rentals'
+
 # app/classes/app_manager
 class AppManager
   def initialize(state)
@@ -13,6 +14,7 @@ class AppManager
     @create_book = CreateBook.new(state.books)
     @create_rental = CreateRental.new(state)
     @list_rentals = ListRentals.new(state.persons)
+    @app_running = state.app_running
   end
 
   def goto_option(option)
@@ -23,5 +25,7 @@ class AppManager
     when 4 then @create_book.create_book
     when 5 then @create_rental.create_rental
     when 6 then @list_rentals.list_rentals
+    when 7 then exit
+    end
   end
 end

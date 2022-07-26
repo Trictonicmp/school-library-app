@@ -1,6 +1,7 @@
 require_relative 'classes/state_manager'
 require_relative 'classes/app_manager'
 require_relative 'helpers/helpers'
+require 'pry'
 
 # app/app.rb
 class App
@@ -23,35 +24,17 @@ class App
     @menu_options.each_with_index do |menu_item, index|
       print "#{index + 1}.- #{menu_item}\n"
     end
-
     puts "\n"
-    print 'Option: '
-    op = gets.chomp
+    op = until_valid_option(1, 8) do
+    end
 
     Integer(op)
   end
 
   def run
-    op = show_menu
-
-    case op
-    when 1
-      list_books
-    when 2
-      list_persons
-    when 3
-      @state.persons << create_person
-    when 4
-      @state.books << @app_manager.book_creator.create_book
-    when 5
-      @state.rentals << create_rental
-    when 6
-      list_rentals
-    else
-      puts 'bye'
-      exit
+    while @state.app_running do
+      op = show_menu
+      @app_manager.goto_option(op)
     end
-
-    run
   end
 end

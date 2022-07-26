@@ -1,6 +1,6 @@
-require_relative 'person_lister'
-# app/classes/menu_options/list_persons.rb
+require_relative '../core/person_lister'
 
+# app/classes/menu_options/list_persons.rb
 class ListPersons
   def initialize(persons_list)
     @persons_list = persons_list

@@ -1,5 +1,5 @@
 require_relative '../core/person_creator'
-require_relative '../helpers/helpers'
+require_relative '../../helpers/helpers'
 
 # app/classes/menu_options/create_person.rb
 class CreatePerson
