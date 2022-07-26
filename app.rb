@@ -1,9 +1,10 @@
-require_relative 'classes/classroom'
-require_relative 'classes/student'
-require_relative 'classes/teacher'
-require_relative 'classes/book'
-require_relative 'classes/person_creator'
+require_relative 'classes/core/classroom'
+require_relative 'classes/core/student'
+require_relative 'classes/core/teacher'
+require_relative 'classes/core/book'
+require_relative 'classes/core/person_creator'
 require_relative 'classes/state_manager'
+require_relative 'classes/app_manager'
 require_relative 'helpers/helpers'
 require 'date'
 
@@ -11,8 +12,8 @@ require 'date'
 class App
   def initialize
     @state = StateManager.new
+    @app_manager = AppManager.new(@state)
     @classroom = Classroom.new('Microverse')
-    @person_creator = PersonCreator.new
   end
 
   def show_menu
@@ -36,10 +37,8 @@ class App
       print "There are no books\n\n"
       return
     end
+    @app_manager.book_lister.list_books
     puts 'Books list'
-    @state.books.each do |book|
-      print "Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
-    end
     print "\n"
   end
 
@@ -49,11 +48,7 @@ class App
       return
     end
     puts 'Persons list'
-    @state.persons.each do |person|
-      print "[#{person.class}] Name: #{person.name?}, "
-      print "ID: #{person.id}, "
-      print "Age: #{person.age?}\n"
-    end
+    @app_manager.person_lister.list_persons
     print "\n"
   end
 
@@ -69,12 +64,12 @@ class App
 
     case op
     when 1
-      new_student = @person_creator.create_student
+      new_student = @app_manager.person_creator.create_student
       new_student.id = generate_new_person_id(@state.persons)
       print "Student created successfully\n\n"
       new_student
     when 2
-      new_teacher = @person_creator.create_teacher
+      new_teacher = @app_manager.person_creator.create_teacher
       new_teacher.id = generate_new_person_id(@state.persons)
       print "Teacher created successfully\n\n"
       new_teacher
@@ -85,9 +80,7 @@ class App
     option_is_valid = false
     until option_is_valid
       puts 'Select a book from the following list by number'
-      @state.books.each_with_index do |book, index|
-        print "#{index}) Title: \"#{book.title}\", Author: \"#{book.author}\"\n"
-      end
+      @app_manager.book_lister.list_books_with_index
       print 'Option: '
       op = Integer(gets.chomp)
       option_is_valid = true if op <= (@state.persons.length - 1)
@@ -100,9 +93,7 @@ class App
     option_is_valid = false
     until option_is_valid
       puts 'Select a person from the following list by number (not id)'
-      @state.persons.each_with_index do |person, index|
-        print "#{index}) ID: #{person.id}, Name: #{person.name?}, Age: #{person.age?}\n"
-      end
+      @app_manager.person_lister.list_persons_with_index
       print 'Option: '
       op = Integer(gets.chomp)
       option_is_valid = true if op <= (@state.persons.length - 1)
@@ -161,7 +152,7 @@ class App
     when 3
       @state.persons << create_person
     when 4
-      @state.books << create_book
+      @state.books << @app_manager.book_creator.create_book
     when 5
       @state.rentals << create_rental
     when 6

@@ -1,15 +1,21 @@
-require_relative '../helpers/helpers'
+require_relative 'book'
+require_relative '../../helpers/helpers'
 
 # app/classes/core/book_creator.rb
 class BookCreator
   private
   def ask_data
+    title = ''
+    author = ''
+
     until_data_ok do
       print 'Title: '
       title = gets.chomp
       print 'Author: '
       author = gets.chomp
     end
+
+    return title, author
   end
 
   public

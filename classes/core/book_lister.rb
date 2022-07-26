@@ -2,7 +2,7 @@
 
 class BookLister
   def initialize(book_list)
-    @book_list = book_list
+    @books_list = book_list
   end
 
   def list_books
