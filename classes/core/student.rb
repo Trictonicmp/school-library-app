@@ -1,5 +1,5 @@
 require_relative 'person'
-# app/classes/student.rb
+# app/classes/core/student.rb
 class Student < Person
   attr_reader :classroom
 

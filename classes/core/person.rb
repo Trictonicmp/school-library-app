@@ -1,7 +1,7 @@
 require_relative 'nameable'
 require_relative 'rental'
 
-# app/classes/person.rb
+# app/classes/core/person.rb
 class Person < Nameable
   attr_accessor :rentals, :id
 

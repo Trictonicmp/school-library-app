@@ -1,4 +1,4 @@
-# app/classes/rental.rb
+# app/classes/core/rental.rb
 class Rental
   attr_accessor :date, :book, :person
 

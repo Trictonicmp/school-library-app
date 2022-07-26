@@ -1,4 +1,4 @@
-# app/classes/classroom.rb
+# app/classes/core/classroom.rb
 class Classroom
   attr_accessor :label
   attr_reader :students

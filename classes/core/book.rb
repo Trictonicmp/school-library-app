@@ -1,6 +1,6 @@
 require_relative 'rental'
 
-# app/classes/book.rb
+# app/classes/core/book.rb
 class Book
   attr_accessor :title, :author, :rentals
 

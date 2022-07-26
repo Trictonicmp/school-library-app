@@ -1,5 +1,5 @@
 require_relative 'person'
-# app/classes/person.rb
+# app/classes/core/person.rb
 class Teacher < Person
   def initialize(specialization, age, name, parent_permission: true)
     super(age, name, parent_permission: parent_permission)

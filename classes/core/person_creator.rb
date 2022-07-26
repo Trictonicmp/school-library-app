@@ -1,6 +1,6 @@
 require_relative '../../helpers/helpers'
 
-# app/classes/person_creator.rb
+# app/classes/core/person_creator.rb
 class PersonCreator
   def create_student
     age = 0
