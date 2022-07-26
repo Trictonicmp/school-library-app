@@ -33,16 +33,3 @@ def until_data_ok
     is_data_ok = parse_response(gets.chomp)
   end
 end
-
-def create_book
-  title = ''
-  author = ''
-  until_data_ok do
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-  end
-  print "Book created successfully\n\n"
-  Book.new(title, author)
-end
